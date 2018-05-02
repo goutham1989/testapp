@@ -63,24 +63,33 @@
 				<p>Earn While You Learn</p>
 			 </div>
 			 
-			 <div class="login_icon_home">
-				<img src="img/login_bg.png"/>
-			 </div>
 			 
-			 <div class="login_box">
+			 
+			 <div class="login_box registration_form">
+				<form action="" method="post">
 				
-				<button class="btn-custom">Continue With Facebook</button>
+				<input type="number" name="phone" id="phone" value="" placeholder="Phone Number">
+				<input type="password" name="password" id="password" value="" placeholder="Set Password">
 				
-				<button class="btn-custom">Continue With Google</button>
+				
 				
 				<div class="ui-grid-a">
 			
-				    <div class="ui-block-a"><button class="btn-custom">Login</button></div>
-				   <div class="ui-block-b"><button class="btn-custom" onclick="location.href = 'registration.html';" >Register</button></div>
+				    <div class="ui-block-a"></div>
+				    <div class="ui-block-b right_reg_but"><button class="btn-custom" name="submit" id="submit" type="submit">Register</button></div>
+				 
+				</div>
 				
-				</div> 
+				<div class="ui-grid-a">
+			
+				    <div class="ui-block-a forgot_pass"><button class="btn-custom">Forgot password ?</button></div>
+				    <div class="ui-block-b forgot_pass"><button class="btn-custom">Existing user, login here</button></div>
 				
+				</div>
+				
+				</form>
 			 </div>
+			 
 		 </div>
      
 		 
@@ -93,10 +102,56 @@
     <script type="text/javascript" src="js/index.js"></script>
      <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.mobile.js"></script>
+    
     <script type="text/javascript">
         app.initialize();
     </script>
     
+   
+    
+    <script type="text/javascript">
+	$(document).ready(function(){
+		
+		
+		$("#submit").click(function(){
+			
+			var ph = $("#phone").val();
+			
+					
+					
+			 $.ajax({
+				type: "POST",
+				url: "http://educationoncloud.in/agentapp/reg.php",
+				crossDomain: true,
+				async: false,
+				data: $('form ').serialize(),
+				success: function (data) {
+					
+					
+					window.location.href = "reg_otp.html?phone=" + ph;
+					//window.location.replace("reg_otp.html?phone=" + ph );
+					
+					
+				},
+				error: function (err) {
+					// handle your error logic here
+					alert("Failed");
+				}
+				
+				
+					
+			   
+        });
+        
+        
+       
+    });
+   
+        
+        
+        
+    });
+    </script>
     
 </body>
 

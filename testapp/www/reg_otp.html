@@ -63,24 +63,28 @@
 				<p>Earn While You Learn</p>
 			 </div>
 			 
-			 <div class="login_icon_home">
-				<img src="img/login_bg.png"/>
-			 </div>
 			 
-			 <div class="login_box">
+			 
+			 <div class="login_box registration_form">
+				<form action="" method="post">
 				
-				<button class="btn-custom">Continue With Facebook</button>
+				<input type="number" name="otp" id="otp" value="" placeholder="Enter the OTP">
 				
-				<button class="btn-custom">Continue With Google</button>
+				
+				
 				
 				<div class="ui-grid-a">
 			
-				    <div class="ui-block-a"><button class="btn-custom">Login</button></div>
-				   <div class="ui-block-b"><button class="btn-custom" onclick="location.href = 'registration.html';" >Register</button></div>
+				    <div class="ui-block-a"></div>
+				    <div class="ui-block-b right_reg_but"><button class="btn-custom" name="submit" id="submit" type="submit">Submit</button></div>
+				 
+				</div>
 				
-				</div> 
 				
+				
+				</form>
 			 </div>
+			 
 		 </div>
      
 		 
@@ -93,11 +97,85 @@
     <script type="text/javascript" src="js/index.js"></script>
      <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.mobile.js"></script>
+    
     <script type="text/javascript">
         app.initialize();
     </script>
     
     
-</body>
+     <script type="text/javascript">
+	$(document).ready(function(){
+		
+		
+		function getParam( name )
+			{
+			 name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+			 var regexS = "[\\?&]"+name+"=([^&#]*)";
+			 var regex = new RegExp( regexS );
+			 var results = regex.exec( window.location.href );
+			 if( results == null )
+			  return "";
+			else
+			 return results[1];
+			}
+
+			var phone_number = getParam( 'phone' );
+			
+			/*
+			// Check browser support
+				if (typeof(Storage) !== "undefined") {
+					// Store
+					localStorage.setItem("phone", phone_number);
+					// Retrieve
+					//document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+				} else {
+					document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+				}*/
+			
+		
+		
+		$("#submit").click(function(){
+			var otp_val = $("#otp").val();
+			
+			 $.ajax({
+				type: "POST",
+				
+				url: "http://educationoncloud.in/agentapp/verify_otp.php",
+				crossDomain: true,
+				
+				data: {
+					otp: otp_val,
+				},
+				success: function (data) {
+					
+					if(data == "OTP Matched"){
+					window.location.href = "activate_dashboard.html?phone=" + phone_number;
+					
+					}else{
+						alert("OTP did not match")
+					}
+					
+					
+					// do something with server response data
+					
+				},
+				error: function(xhr, status, error) {
+				  alert(xhr.JSON.parse(responseText));
+				}
+			   
+        });
+        
+        
+       
+    });
+   
+        
+        
+        
+    });
+    </script>
+    
+    
+    </body>
 
 </html>

@@ -37,59 +37,53 @@
     * Create your own at http://cspisawesome.com
     -->
      <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src http://10.0.2.2" /> -->
-	
+
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <title>Education on cloud</title>
-    <style>
-    .ui-page.ui-body-c.ui-page-active{
-		background:#22d2eb;
-	}
-    </style>
+    <title>Hello World</title>
     
+    <style>
+    
+    .ui-panel-inner {
+            padding:0px; /*make the buttons flush edge to edge*/
+        }
+        .ui-controlgroup {
+            margin:0; /*make the buttons flush to the top*/
+        }
+        #header {
+            height:54px;
+        }
+        #bars-button {
+            margin:7px;
+        }
+    </style>
 </head>
 
 <body>
     
-		 <div id="login_page">
-		 
-			 <div class="login_logo">
-				 <img src="img/logo.jpg"/>
-			 </div>
-			 
-			 <div class="login_home_txt">
-				<h1>Agent Application</h1>
-				<p>Earn While You Learn</p>
-			 </div>
-			 
-			 <div class="login_icon_home">
-				<img src="img/login_bg.png"/>
-			 </div>
-			 
-			 <div class="login_box">
-				
-				<button class="btn-custom">Continue With Facebook</button>
-				
-				<button class="btn-custom">Continue With Google</button>
-				
-				<div class="ui-grid-a">
-			
-				    <div class="ui-block-a"><button class="btn-custom">Login</button></div>
-				   <div class="ui-block-b"><button class="btn-custom" onclick="location.href = 'registration.html';" >Register</button></div>
-				
-				</div> 
-				
-			 </div>
-		 </div>
-     
+       
+      <div data-role="page" id="home" data-theme="b">
+    <div data-role="panel" id="navpanel" data-theme="a"
+         data-display="overlay" data-position="right">
+        <div data-role="controlgroup" data-corners="false">
+            <a href="#" data-role="button">Business</a>
+            <a href="#" data-role="button">Numbers</a>
+            <a href="#" data-role="button">Money</a>
+            <a href="#" data-role="button">People</a>
+        </div>
+    </div>
+
+    <div id="header" data-role="header" data-theme="b">
+        <a id="bars-button" data-icon="bars"  class="ui-btn-right" style="margin-top:10px;" href="#navpanel">Menu</a>
+    </div>
+</div>
 		 
 
     
     
     
     
-   <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
      <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.mobile.js"></script>

@@ -36,7 +36,7 @@
         * Enable eval(): add 'unsafe-eval' to default-src
     * Create your own at http://cspisawesome.com
     -->
-     <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src http://10.0.2.2" /> -->
+     <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" />--> 
 	
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
@@ -52,35 +52,12 @@
 
 <body>
     
-		 <div id="login_page">
+		 <div id="login_page" data-role="page">
 		 
-			 <div class="login_logo">
-				 <img src="img/logo.jpg"/>
-			 </div>
-			 
-			 <div class="login_home_txt">
-				<h1>Agent Application</h1>
-				<p>Earn While You Learn</p>
-			 </div>
-			 
-			 <div class="login_icon_home">
-				<img src="img/login_bg.png"/>
-			 </div>
-			 
-			 <div class="login_box">
-				
-				<button class="btn-custom">Continue With Facebook</button>
-				
-				<button class="btn-custom">Continue With Google</button>
-				
-				<div class="ui-grid-a">
 			
-				    <div class="ui-block-a"><button class="btn-custom">Login</button></div>
-				   <div class="ui-block-b"><button class="btn-custom" onclick="location.href = 'registration.html';" >Register</button></div>
-				
-				</div> 
-				
-			 </div>
+				<button id="btn_camera">Camera</button>
+				<img id="img_campH">
+			 
 		 </div>
      
 		 
@@ -93,11 +70,68 @@
     <script type="text/javascript" src="js/index.js"></script>
      <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.mobile.js"></script>
+    
     <script type="text/javascript">
         app.initialize();
     </script>
     
+    <script>
     
-</body>
+     $(document).ready(function(){
+		function camSuccess(imgData){
+			$("#img_campH").attr("src", imgData);
+		}
+		
+		function camError(error){
+			alert(error+"error");
+		}
+		
+		function accessCamera(){
+			var options = {
+				correctOrientation: true, 
+				allowEdit: true,
+				targetWidth: 512,
+				targetHeight: 512,
+				destinationType: Camera.DestinationType.FILE_URI, 
+				sourceType: Camera.PictureSourceType.CAMERA
+			};
+			
+			navigator.camera.getPicture(camSuccess, camError, options); 
+		}
+		
+		$("#btn_camera").on("click", accessCamera);
+	});
+    
+    </script>
+    
+    
+    
+    
+    
+    <script>
+    
+    $(document).ready(function(){
+		
+		
+		function getParam( name )
+			{
+			 name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+			 var regexS = "[\\?&]"+name+"=([^&#]*)";
+			 var regex = new RegExp( regexS );
+			 var results = regex.exec( window.location.href );
+			 if( results == null )
+			  return "";
+			else
+			 return results[1];
+			}
+
+			var phone_number = getParam( 'phone' );
+			//alert(phone_number)
+			
+		});
+    </script>
+    
+    </body>
 
 </html>
+
