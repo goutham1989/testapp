@@ -37,7 +37,12 @@
     * Create your own at http://cspisawesome.com
     -->
      <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" />--> 
-	
+	<meta http-equiv="Content-Security-Policy" 
+          content="default-src *; 
+                   style-src 'self' 'unsafe-inline' 'unsafe-eval'; 
+                   script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+                   
+                   
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
